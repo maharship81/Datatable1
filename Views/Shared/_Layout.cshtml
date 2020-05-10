@@ -1,0 +1,100 @@
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link href="~/lib/datatables/css/jquery.dataTables.css" rel="stylesheet" />*@
+    @*<link href="~/lib/datatables/css/jquery.dataTables.min.css" rel="stylesheet" />*@
+    @*<link rel="stylesheet" href="~/css/site.css" />
+        <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/Index.css" rel="stylesheet" />*@
+
+</head>
+<body>
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">MVCCoreTutorial</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-action="Index" asp-controller="Home">Home</a>
+                    </li>
+                    @*<li class="dropdown" style="margin-top:9px;">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" asp-area="" asp-page="/Index">Services</a>
+                            <ul class="dropdown-menu" role="menu" id="myTab">
+                                <li role="presentation"><a href="#music" aria-controls="music" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-music"> </span> Music & Dance</a></li>
+                                <li class="divider"></li>
+                                <li role="presentation"><a href="#training" aria-controls="training" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-book"> </span> Summar Training</a></li>
+                                <li class="divider"></li>
+                                <li role="presentation"><a href="#website" aria-controls="website" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-cloud"> </span> Website Building</a></li>
+                            </ul>
+                        </li>*@
+                    <li class="nav-item dropdown">
+                        <a id="a_reports" class="nav-link text-dark dropdown-toggle" data-toggle="dropdown" asp-area="" asp-controller="">List</a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Employee">Employee</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Department">Department</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Site">Site</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                    </li>
+                    @if (Context.Session.GetString("UserId") != null)
+                    {
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">Welcome :@Context.Session.GetString("UserName")  </a></li>
+                            <li><a href="/Test/Logout">Logout</a></li>
+
+                        </ul>
+
+                    }
+                    else
+                    {
+
+                        <a class="nav-link text-dark" style="margin-left:900px;" asp-area="" asp-action="Login" asp-controller="Home">Login</a>
+                        <a class="nav-link text-dark" asp-area="" asp-action="Registration" asp-controller="Home">Register</a>
+
+                    }
+                </ul>
+
+
+            </div>
+
+        </nav>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <div style="margin-top:400px;">
+        <footer class="border-top footer text-muted">
+            <div class="container" style="margin-top:10px;">
+                &copy; 2020 - MVCCoreTutorial - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            </div>
+        </footer>
+    </div>
+    @*<script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+            <script src="~/lib/datatables/js/jquery.dataTables.js"></script>*@
+    @*<script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>*@
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
